@@ -15,7 +15,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: 
 .section-subtitle { text-align: center; color: #64748b; max-width: 600px; margin: 0 auto 35px auto; font-size: 1.05rem; display: block; }
 
 /* Hero Banner (Points to your new Skyline asset) */
-header { background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('asset/image_8WZNjF.png') no-repeat center center/cover; color: #ffffff; text-align: center; padding: 120px 0; }
+header { background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('assets/executives-airpot.jpg.jpg') no-repeat center center/cover; color: #ffffff; text-align: center; padding: 120px 0; }
 .badge { background: rgba(252, 209, 22, 0.15); color: var(--secondary); border: 1px solid var(--secondary); padding: 6px 16px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; }
 header h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; line-height: 1.2; }
 header p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 35px auto; color: #cbd5e1; }
