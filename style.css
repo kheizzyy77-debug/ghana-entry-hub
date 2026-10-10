@@ -1,3 +1,4 @@
+
 :root {
     --primary: #006B3F;    /* Ghana Green */
     --secondary: #FCD116;  /* Ghana Yellow */
@@ -104,3 +105,41 @@ header p { font-size: 1.1rem; max-width: 750px; margin: 0 auto 25px auto; color:
 /* Footer */
 footer { background-color: var(--dark); color: #94a3b8; font-size: 0.85rem; }
 .container-footer { width: 92%; max-width: 1100px; margin: 0 auto; padding: 20px 0; text-align: center; }
+
+/* Floating WhatsApp Button Frame */
+.whatsapp-floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; /* Official WhatsApp Green */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+    z-index: 9999; /* Forces button to always float on top of components */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-floating-btn:hover {
+    transform: translateY(-4px); /* Sleek floating pop effect */
+    background-color: #1ebd56;
+}
+
+/* Responsive adjustment for clean view on mobile screens */
+@media (max-width: 480px) {
+    .whatsapp-floating-btn span {
+        display: none; /* Hides text on small screens, turning it into a beautiful round floating icon */
+    }
+    .whatsapp-floating-btn {
+        padding: 14px;
+        bottom: 20px;
+        right: 20px;
+        border-radius: 50%;
+    }
+}
