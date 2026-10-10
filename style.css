@@ -9,6 +9,12 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: var(--dark); background-color: #ffffff; }
 
+/* New Site Logo Navbar Layout */
+.site-navbar { background-color: #ffffff; padding: 10px 0; border-bottom: 1px solid #e2e8f0; width: 100%; }
+.nav-container { width: 92%; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-start; }
+.site-logo { height: 45px; width: auto; max-width: 100%; display: block; object-fit: contain; }
+.logo-link { display: inline-block; text-decoration: none; }
+
 /* Tightened Spacing Layout */
 .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 25px 0; }
 .section-title { text-align: center; font-size: 1.8rem; font-weight: 800; display: block; margin-bottom: 5px; color: var(--dark); }
@@ -68,8 +74,9 @@ header p { font-size: 1.1rem; max-width: 750px; margin: 0 auto 25px auto; color:
 .payment-box { background-color: var(--light); border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; }
 .payment-box h3 { font-size: 1.2rem; margin-bottom: 4px; }
 .box-desc { color: #64748b; font-size: 0.85rem; }
-.price { font-size: 2.5rem; font-weight: 900; color: var(--primary); margin: 10px 0; }
-.price span { font-size: 1.1rem; color: #64748b; font-weight: 500; }
+/* Reduced Price Layout Size down to 1.8rem */
+.price { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin: 10px 0; }
+.price span { font-size: 1.0rem; color: #64748b; font-weight: 500; }
 .btn-pay { background-color: var(--primary); color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 0.95rem; display: block; text-align: center; }
 .payment-notes { font-size: 0.75rem; color: #64748b; margin-top: 10px; text-align: center; }
 
