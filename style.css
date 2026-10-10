@@ -9,11 +9,11 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: var(--dark); background-color: #ffffff; }
 
-/* New Site Logo Navbar Layout - Centered & Visible Upgrade */
+/* Blended Dark Navbar Layout - 120px Center Sizing */
 .site-navbar { 
-    background-color: #ffffff; 
-    padding: 20px 0; /* Gives the logo breathing room at the top */
-    border-bottom: 1px solid #e2e8f0; 
+    background-color: #0f172a; /* Matches your dark hero theme perfectly */
+    padding: 15px 0; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
     width: 100%; 
 }
 .nav-container { 
@@ -22,10 +22,10 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: 
     margin: 0 auto; 
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Forces the logo layout directly to the center */
+    justify-content: center; /* Centers the transparent logo asset */
 }
 .site-logo { 
-    height: 120px; /* Quadrupled size from 32px to ensure full visibility */
+    height: 120px; 
     width: auto; 
     max-width: 100%; 
     display: block; 
@@ -35,7 +35,6 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: 
     display: inline-block; 
     text-decoration: none; 
 }
-
 
 /* Tightened Spacing Layout */
 .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 25px 0; }
@@ -96,7 +95,7 @@ header p { font-size: 1.1rem; max-width: 750px; margin: 0 auto 25px auto; color:
 .payment-box { background-color: var(--light); border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; }
 .payment-box h3 { font-size: 1.2rem; margin-bottom: 4px; }
 .box-desc { color: #64748b; font-size: 0.85rem; }
-/* Reduced Price Layout Size down to 1.8rem */
+/* Balanced Appointment Price Element */
 .price { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin: 10px 0; }
 .price span { font-size: 1.0rem; color: #64748b; font-weight: 500; }
 .btn-pay { background-color: var(--primary); color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 0.95rem; display: block; text-align: center; }
