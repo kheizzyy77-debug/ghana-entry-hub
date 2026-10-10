@@ -9,10 +9,10 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: var(--dark); background-color: #ffffff; }
 
-/* New Site Logo Navbar Layout - Compressed Logo Fix */
+/* New Site Logo Navbar Layout - Centered & Visible Upgrade */
 .site-navbar { 
     background-color: #ffffff; 
-    padding: 12px 0; /* Balanced vertical breathing room */
+    padding: 20px 0; /* Gives the logo breathing room at the top */
     border-bottom: 1px solid #e2e8f0; 
     width: 100%; 
 }
@@ -22,10 +22,10 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.4; color: 
     margin: 0 auto; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Keeps the logo in the top-left corner */
+    justify-content: center; /* Forces the logo layout directly to the center */
 }
 .site-logo { 
-    height: 32px; /* Reduced from 45px to make it sleek and elegant */
+    height: 120px; /* Quadrupled size from 32px to ensure full visibility */
     width: auto; 
     max-width: 100%; 
     display: block; 
