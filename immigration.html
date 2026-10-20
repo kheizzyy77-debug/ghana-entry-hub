@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immigration Core & Pre-Screening Portal | Ghana Entry Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specialized CSS for the Live API Pipeline Track Mockup */
+        .pipeline-card {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(11, 37, 69, 0.04);
+        }
+        .pipeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 10px;
+        }
+        .pipeline-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+        }
+        .pipeline-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #CBD5E1;
+            z-index: 1;
+        }
+        .timeline-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+        .step-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid var(--white);
+        }
+        .timeline-step.complete .step-indicator {
+            background: #25D366;
+            color: var(--white);
+        }
+        .timeline-step.active .step-indicator {
+            background: var(--secondary);
+            color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(214, 175, 55, 0.2);
+        }
+        .step-details h4 {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+        .step-details p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        .secure-badge-inline {
+            background: #E2E8F0;
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Corporate Global Mobility Institutional Header -->
+<nav class="site-navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo-link">
+            <img src="assets/Ghanaentryhub-logo.jpg.jpg" alt="Ghana Entry Hub Emblem" class="site-logo">
+        </a>
+        <div class="nav-links-right">
+            <a href="index.html" class="nav-item">Home</a>
+            
+            <!-- Global Mobility Services Dropdown Node -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-item dropbtn">Services Matrix ▾</a>
+                <div class="dropdown-content">
+                    <a href="immigration.html">Immigration Core & Pre-Screening</a>
+                    <a href="real-estate.html">Litigation-Free Asset Acquisition</a>
+                    <a href="index.html#corporate">Corporate HR Onboarding & VIP Protocol</a>
+                </div>
+            </div>
+
+            
+            <div class="nav-dropdown">
+                <a href="#" class="nav-item dropbtn">About the Hub ▾</a>
+                <div class="dropdown-content">
+                    <a href="index.html#nkrumah-doctrine">The Nkrumah Doctrine & Mission</a>
+                    <a href="index.html#alignment">Public-Private Partnership Mandate</a>
+                </div>
+            </div>
+
+            <!-- Legislative Updates Node -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-item dropbtn">Governance Briefings ▾</a>
+                <div class="dropdown-content">
+                    <a href="resources.html">National Economic Repository (Blueprints)</a>
+                    <a href="immigration.html#act-843">Act 843 Regulatory Compliance Bulletins</a>
+                </div>
+            </div>
+
+            <a href="resources.html" class="nav-item">Repository</a>
+            <a href="#booking" class="btn-nav-cta">Enterprise Portal Access</a>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Sovereign Immigration Hero Module -->
+    <header class="hero-gateway">
+        <div class="container">
+            <span class="badge-state">Secure Intake Clearinghouse</span>
+            <h1>Sovereign E-Visa Clearance & Workforce Localization Node</h1>
+            <p>Pre-screening coordination pipelines engineered to clear regulatory documentation deficiencies before submission to the Ghana Immigration Service (GIS).</p>
+        </div>
+    </header>
+
+    <!-- Operational Pre-Screening Framework Split Grid -->
+    <section class="split-framework-section">
+        <div class="container-split">
+            
+            <!-- Left Column: High Security Intake Protocol -->
+            <div class="split-text">
+                <span class="institution-tag">Lead Verification Protocol</span>
+                <h2>Eliminate Regulatory Bureaucracy & Friction</h2>
+                <p>Securing executive work authorizations and permanent residency permits in an emerging economy demands meticulous primary due diligence. Handing off incomplete packets results in catastrophic deployment delays.</p>
+                <p>The Ghana Entry Hub Pre-Screening Gateway performs automated data validation checks on corporate payroll credentials, identity registries, and professional skill matrices. We insulate your scaling enterprise from backend friction points entirely.</p>
+                
+                <ul class="checkmark-matrix-list" style="margin-top: 25px;">
+                    <li>✓ 100% Pre-Audited Corporate Dossier Verification</li>
+                    <li>✓ Professional Skill Metrics Mapping via the Sankofa Data Engine</li>
+                    <li>✓ Pre-Clearance Status Certification prior to GIS Processing</li>
+                </ul>
+            </div>
+
+            <!-- Right Column: Interactive Portal Tracking Simulation Tool -->
+            <div class="pipeline-card">
+                <div class="pipeline-title">
+                    <span>🔒 Active API Pipeline Mockup</span>
+                </div>
+                <div class="pipeline-timeline">
+                    
+                    <!-- Step 1 -->
+                    <div class="timeline-step complete">
+                        <div class="step-indicator">✓</div>
+                        <div class="step-details">
+                            <h4>Corporate Credentials Uploaded</h4>
+                            <p>Dossier packets received, encrypted, and isolated under Act 843 guidelines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-step complete">
+                        <div class="step-indicator">✓</div>
+                        <div class="step-details">
+                            <h4>Institutional Discrepancies Cleared</h4>
+                            <p>Background data verification filters successfully passed with zero documentation syntax errors.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-step active">
+                        <div class="step-indicator">3</div>
+                        <div class="step-details">
+                            <h4>GIS Data Pipeline Sync In Progress</h4>
+                            <p>Pre-screened packet structural handshake executing with state database gateways.</p>
+                            <span class="secure-badge-inline">Awaiting Secure Token</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-step">
+                        <div class="step-indicator">4</div>
+                        <div class="step-details">
+                            <h4>Statutory Work Authorization Issued</h4>
+                            <p>Final legal clearance status logged and transmitted to enterprise endpoints.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contextual Alignment Section with Imagery -->
+    <section class="split-framework-section alt-bg">
+        <div class="container-split">
+            <div class="split-image">
+                <img src="assets/International-del.jpg.jpg" alt="International Delegation and Global Human Mobility Leaders">
+            </div>
+            <div class="split-text">
+                <span class="institution-tag">Sankofa Initiative Mapping</span>
+                <h2>Data Transmission Infrastructure for the Diaspora</h2>
+                <p>In direct alignment with the Diaspora Affairs Office under the Office of the President, our system cross-references incoming intellectual capital with current state economic demand indicators.</p>
+                <p>We do not manage transactional travel paperwork. We build the strategic public-private operational rails required to safely onboard international workforce assets into the sovereign economic matrix.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Administrative Intake Redirect -->
+    <section id="booking" class="intake-section">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Initiate Dossier Pre-Screening Protocol</h2>
+            <p class="section-subtitle">If you are a corporate mobility officer or high-net-worth investor preparing an immigration deployment model, register your parameters immediately.</p>
+            <a href="index.html#booking" class="btn-gateway-manual" style="display: inline-block; padding: 14px 40px;">Open Secure Intake Node</a>
+        </div>
+    </section>
+
+    <!-- State Asset Platform Footer -->
+    <footer class="state-footer">
+        <div class="container-footer">
+            <p>&copy; 2026 Ghana Entry Hub Framework. Strategically Configured National Asset Class. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Encrypted Communications Node -->
+    <a href="https://wa.me/233201189031"  class="whatsapp-communication-channel" target="_blank" rel="noopener noreferrer">

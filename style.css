@@ -1,9 +1,15 @@
+/* ==========================================================================
+   GHANA ENTRY HUB - UNIFIED GLOBAL BRAND SHEET (style.css)
+   ========================================================================== */
+
 :root {
-  --primary: #006B3F; /* Ghana Green */
-  --secondary: #FCD116; /* Ghana Yellow */
-  --accent: #CE1126; /* Ghana Red */
-  --dark: #0f172a;
-  --light: #f8fafc;
+  --primary: #0B2545;       /* Institutional Navy Blue */
+  --secondary: #D4AF37;     /* Dignified Gold Accent */
+  --dark: #0A192F;          /* Deep Administration Matte */
+  --light: #F4F6F9;         /* Sovereign Ministry Grey */
+  --white: #FFFFFF;
+  --text-dark: #1E293B;
+  --text-muted: #64748B;
 }
 
 * {
@@ -13,475 +19,546 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  line-height: 1.4;
-  color: var(--dark);
-  background-color: #ffffff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--white);
 }
 
-/* Blended Dark Navbar Layout */
+/* --- Institutional Header Navigation Bar --- */
 .site-navbar {
-  background-color: #0f172a;
+  background-color: var(--primary);
   padding: 15px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid var(--secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10000;
   width: 100%;
 }
 
 .nav-container {
-  width: 92%;
-  max-width: 1100px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .site-logo {
-  height: 120px;
+  height: 65px;
   width: auto;
-  max-width: 100%;
   display: block;
   object-fit: contain;
 }
 
 .logo-link {
   display: inline-block;
-  text-decoration: none;
 }
 
-/* Containers and Spacing Typography */
+.nav-links-right {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* Optimized spacing for corporate dropdown layout */
+}
+
+.nav-item {
+  color: #E2E8F0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: var(--secondary);
+}
+
+.btn-nav-cta {
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-nav-cta:hover {
+  opacity: 0.9;
+}
+
+/* --- Corporate Dropdown Architecture (Cartus/SIRVA Style Alignment) --- */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--primary);
+  min-width: 280px;
+  box-shadow: 0px 8px 24px rgba(10, 25, 47, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--secondary);
+  border-radius: 4px;
+  z-index: 10001;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+}
+
+.dropdown-content a {
+  color: #E2E8F0;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--dark);
+  color: var(--secondary);
+  padding-left: 25px;
+}
+
+/* Activate Toggle Handshake on Hover */
+.nav-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* --- Core Layout Containers --- */
 .container {
-  width: 92%;
-  max-width: 1100px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 25px 0;
+  padding: 60px 0;
 }
 
 .section-title {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  display: block;
-  margin-bottom: 5px;
-  color: var(--dark);
+  color: var(--primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
 }
 
 .section-subtitle {
   text-align: center;
-  color: #64748b;
-  max-width: 550px;
-  margin: 0 auto 20px auto;
-  font-size: 0.95rem;
-  display: block;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 1.05rem;
 }
 
-/* Hero Banner Layout */
-header {
-  background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('assets/executives-airpot.jpg.jpg') no-repeat center center/cover;
-  color: #ffffff;
+/* --- Sovereign Hero Portal Layout --- */
+header.hero-gateway {
+  background: linear-gradient(rgba(11, 37, 69, 0.9), rgba(10, 25, 47, 0.92)), 
+              url('assets/executive-arrives-droping-off-plane.jpg.jpg') no-repeat center center/cover;
+  color: var(--white);
   text-align: center;
-  padding: 70px 0;
+  padding: 120px 0;
 }
 
-.badge {
-  background: rgba(252, 209, 22, 0.15);
+.badge-state {
+  background: rgba(212, 175, 55, 0.12);
   color: var(--secondary);
   border: 1px solid var(--secondary);
-  padding: 4px 12px;
-  border-radius: 50px;
-  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   display: inline-block;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
-header h1 {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
+header.hero-gateway h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: -1px;
 }
 
-header p {
-  font-size: 1.1rem;
-  max-width: 750px;
-  margin: 0 auto 25px auto;
-  color: #cbd5e1;
+header.hero-gateway p {
+  font-size: 1.25rem;
+  max-width: 850px;
+  margin: 0 auto 35px auto;
+  color: #CBD5E1;
 }
 
 .cta-group {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
 }
 
-.btn-primary-cta {
+.btn-primary-blueprint {
   background-color: var(--secondary);
-  color: var(--dark);
-  padding: 12px 24px;
+  color: var(--primary);
+  padding: 14px 28px;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: 0.3s;
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
-.btn-secondary-cta {
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  padding: 10px 22px;
+.btn-secondary-blueprint {
+  border: 2px solid #E2E8F0;
+  color: #E2E8F0;
+  padding: 12px 26px;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: 0.3s;
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.2s;
 }
 
-.btn-secondary-cta:hover {
-  background-color: #ffffff;
-  color: var(--dark);
+.btn-secondary-blueprint:hover {
+  background-color: var(--white);
+  color: var(--primary);
 }
 
-/* Split Columns Structure */
-.arrival-feature-section, .corporate-section, .products-section {
+/* --- Institutional Alignment Grid Console --- */
+.alignment-console {
+  background-color: var(--light);
   padding: 30px 0;
+  border-bottom: 1px solid #E2E8F0;
+  text-align: center;
 }
 
-.arrival-feature-section { background: #ffffff; }
-.corporate-section { background: #ffffff; }
-.products-section { background: #f1f5f9; }
+.alignment-console p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.logo-alignment-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.alignment-badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+}
+
+.alignment-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.alignment-badge-card:hover .alignment-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.logo-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* --- Split Framework Columns --- */
+.split-framework-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.split-framework-section.alt-bg {
+  background-color: var(--light);
+}
 
 .container-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  width: 92%;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 50px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   align-items: center;
 }
 
 .split-image img {
   width: 100%;
-  height: 260px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  display: block;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+  border-bottom: 4px solid var(--secondary);
 }
 
-.split-text .tag {
-  color: var(--primary);
+.split-text .institution-tag {
+  color: var(--secondary);
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.8rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  background-color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 12px;
 }
 
 .split-text h2 {
-  font-size: 1.8rem;
-  margin: 3px 0 10px 0;
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 15px;
   font-weight: 800;
-  line-height: 1.2;
 }
 
 .split-text p {
-  color: #475569;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
+  color: #334155;
+  font-size: 1.05rem;
+  margin-bottom: 15px;
 }
 
-/* Feature Cards Framework */
-.solutions-section {
+/* --- Framework Matrix System --- */
+.matrix-section {
   background-color: var(--light);
-  padding: 30px 0;
+  padding: 80px 0;
 }
 
-.grid {
+.matrix-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
 }
 
-.problem-card {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+.framework-card {
+  background: var(--white);
+  padding: 35px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   border-top: 4px solid var(--primary);
 }
 
-.problem-card h3 {
-  margin-bottom: 8px;
-  color: var(--dark);
-  font-size: 1.15rem;
-}
-
-.problem-card p {
-  color: #475569;
-  font-size: 0.9rem;
-}
-
-.checkmark-list {
-  list-style: none;
-  margin-top: 10px;
-}
-
-.checkmark-list li {
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: var(--dark);
-  font-size: 0.9rem;
-}
-
-/* Product Component Rules */
-.product-layout-fix {
-  align-items: stretch;
-  gap: 20px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.product-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  padding: 18px;
-  border-radius: 10px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-card h4 {
-  font-size: 1.05rem;
-  color: var(--dark);
-  margin-bottom: 4px;
-}
-
-.product-card p {
-  color: #64748b;
-  font-size: 0.85rem;
-  margin-bottom: 10px;
-}
-
-.prod-price {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 10px !important;
-}
-
-.btn-buy {
-  background: #e2e8f0;
-  color: var(--dark);
-  text-decoration: none;
-  padding: 8px 12px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  transition: 0.3s;
-}
-
-.btn-buy:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* Intake & Consultation Grid Layout */
-.booking-section {
-  background: white;
-  padding: 30px 0;
-}
-
-.booking-section h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  font-weight: 800;
-}
-
-.booking-intro-text {
-  text-align: center; 
-  margin-bottom: 30px; 
-  color: #475569;
-}
-
-.booking-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.registration-form {
-  background-color: var(--light);
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-}
-
-.registration-form h3 {
+.framework-card h3 {
   margin-bottom: 12px;
-  color: var(--dark);
-  font-size: 1.2rem;
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 6px;
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
-.registration-form label {
+.framework-card p {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.checkmark-matrix-list {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.checkmark-matrix-list li {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+/* --- Intake Module Grid --- */
+.intake-section {
+  background: var(--white);
+  padding: 80px 0;
+}
+
+.intake-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.secure-intake-form {
+  background-color: var(--light);
+  padding: 35px;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+.secure-intake-form h3 {
+  margin-bottom: 20px;
+  color: var(--primary);
+  font-size: 1.35rem;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 8px;
+  font-weight: 700;
+}
+
+.secure-intake-form label {
   display: block;
-  margin-top: 10px;
+  margin-top: 15px;
   font-weight: 600;
   font-size: 0.85rem;
-  color: #475569;
+  color: var(--primary);
+  text-transform: uppercase;
 }
 
-.registration-form input, .registration-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  background: #ffffff;
-}
-
-.btn-submit-form {
-  background-color: var(--dark);
-  color: white;
+.secure-intake-form input, .secure-intake-form textarea {
   width: 100%;
   padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--white);
+}
+
+.btn-submit-secure {
+  background-color: var(--primary);
+  color: var(--white);
+  width: 100%;
+  padding: 14px;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 0.95rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 15px;
-  transition: opacity 0.2s;
+  margin-top: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.btn-submit-form:hover {
-  opacity: 0.9;
-}
-
-/* Premium Dynamic Integration Engine Grid UI */
-.appointment-box {
+.sync-briefing-box {
   background-color: var(--light);
-  border: 1px solid #e2e8f0;
-  padding: 25px;
-  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 35px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.appointment-box h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  color: var(--dark);
-}
-
-.box-desc {
-  color: #475569;
-  font-size: 0.9rem;
-  line-height: 1.5;
+.sync-briefing-box h3 {
+  font-size: 1.3rem;
   margin-bottom: 12px;
-}
-
-.font-accent-weight {
   color: var(--primary);
 }
 
-.security-notice {
-  font-size: 0.8rem;
-  color: #64748b;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 6px;
-  border-left: 3px solid var(--secondary);
-  margin-top: 5px;
+.box-narrative {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.btn-calendar-manual {
+.accent-gold-weight {
+  color: #B8860B;
+  font-weight: 700;
+}
+
+.sovereign-security-callout {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  background: var(--white);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid var(--secondary);
+  margin-top: 10px;
+}
+
+.btn-gateway-manual {
   display: block;
   text-align: center;
   text-decoration: none;
-  margin-top: 15px;
-  background-color: var(--dark);
-  color: #ffffff;
-  padding: 12px 20px;
-  font-weight: bold;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
-}
-
-.btn-calendar-manual:hover {
+  margin-top: 20px;
   background-color: var(--primary);
-}
-
-.payment-notes {
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* Footer Container Styling */
-footer {
-  background-color: var(--dark);
-  color: #94a3b8;
-  font-size: 0.85rem;
-}
-
-.container-footer {
-  width: 92%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px 0;
-  text-align: center;
-}
-
-/* Floating Responsive WhatsApp Engine */
-.whatsapp-floating-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: #25D366;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  color: var(--white);
+  padding: 14px 20px;
   font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-  z-index: 9999;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
-.whatsapp-floating-btn:hover {
-  transform: translateY(-4px);
-  background-color: #1ebd56;
+.btn-gateway-manual:hover {
+  background-color: var(--dark);
 }
 
-@media (max-width: 480px) {
-  .whatsapp-floating-btn span {
-    display: none;
-  }
-  .whatsapp-floating-btn {
-    padding: 14px;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 50%;
-  }
+.audit-notes {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 20px;
+text-align: center;
+}
+/* --- Footer Platform --- */
+footer.state-footer {
+background-color: var(--dark);
+color: #94A3B8;
+font-size: 0.9rem;
+border-top: 4px solid var(--primary);
+}
+.container-footer {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 30px 0;
+text-align: center;
+}
+/* --- WhatsApp Communications Layer --- */
+.whatsapp-communication-channel {
+position: fixed;
+bottom: 30px;
+right: 30px;
+background-color: #25D366;
+color: var(--white);
+text-decoration: none;
+padding: 14px 24px;
+border-radius: 4px;
+display: flex;
+align-items: center;
+gap: 12px;
+font-weight: 700;
+font-size: 0.95rem;
+box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+z-index: 99999;
+}
+@media (max-width: 992px) {
+.logo-alignment-grid { gap: 20px; }
+.alignment-badge-card { width: 45%; }
+}
+@media (max-width: 768px) {
+.nav-container { flex-direction: column; gap: 15px; }
+.nav-links-right { flex-wrap: wrap; justify-content: center; gap: 15px; }
+.container-split { grid-template-columns: 1fr; }
+header.hero-gateway h1 { font-size: 2.2rem; }
 }
