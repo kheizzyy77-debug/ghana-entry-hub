@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language & Education Services | Ghana Entry Hub</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Embedded layout overrides to ensure proper grid page structure */
+        .booking-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+        .booking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            align-items: stretch;
+        }
+        .registration-form {
+            background-color: var(--light, #f8fafc);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .registration-form h3 {
+            margin-bottom: 15px;
+            color: var(--primary, #006B3F);
+            font-size: 1.25rem;
+            border-bottom: 2px solid var(--primary, #006B3F);
+            padding-bottom: 6px;
+        }
+        .registration-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .registration-form input, .registration-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            background: #ffffff;
+            box-sizing: border-box;
+        }
+        .appointment-box {
+            background-color: var(--light, #f8fafc);
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .appointment-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--primary, #006B3F);
+        }
+        .box-desc {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .font-accent-weight {
+            color: var(--primary, #006B3F);
+            font-weight: 700;
+        }
+        .security-notice {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary, #FCD116);
+            margin-bottom: 15px;
+        }
+        .btn-calendar-manual {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background-color: var(--dark, #0f172a);
+            color: #ffffff;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+        .btn-calendar-manual:hover {
+            background-color: var(--primary, #006B3F);
+        }
+    </style>
 </head>
 <body>
 
@@ -110,7 +201,7 @@
     </section>
 
     <!-- Service Feature Section 2: Cultural Music Lesson Image -->
-    <section class="arrival-feature-section alt-bg" style="background-color: var(--light);">
+    <section class="arrival-feature-section alt-bg" style="background-color: var(--light, #f8fafc);">
         <div class="container-split">
             <div class="split-text">
                 <span class="tag">Immersive Experiences</span>
@@ -127,45 +218,6 @@
     <!-- Intake & Booking Section -->
     <section id="booking" class="booking-section">
         <div class="container">
-            <h2>Start Your Learning Program</h2>
-            <p class="booking-intro-text">Ready to boost your local communication skills? Share your details below to activate your coaching program.</p>
+            <h2 class="section-title">Start Your Learning Program</h2>
+            <p class="section-subtitle">Ready to boost your local communication skills? Share your details below to activate your coaching program.</p>
             
-            <div class="booking-container">
-                <!-- Registration Form -->
-                <form action="https://calendly.com/kheizzyy77/20" method="POST" class="registration-form">
-                    <input type="hidden" name="_next" value="https://calendly.com">
-                    <input type="text" name="_gotcha" style="display:none">
-                    
-                    <h3>1. Share Your Learning Goals</h3>
-                    <label for="name">Company Name or Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="E.g., ABC Company / John Doe">
-                    
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="E.g., johndoe@company.com">
-                    
-                    <label for="whatsapp">WhatsApp Number (With Country Code)</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="E.g., +233 20 000 0000">
-                    
-                    <label for="notes">What are your main language, cultural, or school enrollment goals?</label>
-                    <textarea id="notes" name="objectives" rows="3" required placeholder="Tell us about your target timelines, kids' school requirements, or language needs..."></textarea>
-                    
-                    <button type="submit" class="btn-submit-form">Submit Details</button>
-                </form>
-
-                <!-- Booking Info -->
-                <div class="appointment-box">
-                    <h3>2. Schedule Your Placement Call</h3>
-                    <p class="box-desc font-accent-weight">Initial 15-Minute Consultation: <strong>100% Free</strong></p>
-                    <p class="box-desc">Once you submit your details on the left, our page will direct your browser to our calendar to pick a perfect time for your orientation chat.</p>
-                    <p class="box-desc security-notice">If browser security settings block the redirect, please use the button below to secure your consultation manually.</p>
-                    
-                    <a href="https://calendly.com/kheizzyy77/20" class="btn-calendar-manual" target="_blank">Access Booking Calendar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Future Enterprise Portal Segment -->
-    <section class="solutions-section" style="background-color: #f1f5f9; border-top: 1px solid #e2e8f0;">
-        <div class="container" style="text-align: center; padding: 40px 0;">
-            <h3 style="color: var(--dark); font-size: 1.2rem; margin-bottom: 10px;">🔒 Institutional Client Portal</h3>
