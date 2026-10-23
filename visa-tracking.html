@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Visa Live Tracking Dashboard | Ghana Entry Hub</title>
+    
+    <!-- Link your existing global stylesheet here -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- Customized Brand Extensions --- */
+        body.gateway-body {
+            background-color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px);
+            padding: 40px 20px;
+        }
+
+        /* Access Gatekeeper Card */
+        .gatekeeper-screen {
+            background: var(--white);
+            max-width: 450px;
+            width: 100%;
+            padding: 45px 35px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+            text-align: center;
+            border-top: 4px solid #CE1126; /* Sovereignty Signal Red */
+        }
+
+        /* Tracker Panel Console */
+        .tracker-container {
+            display: none; /* Injected lock state */
+            background: var(--white);
+            max-width: 650px;
+            width: 100%;
+            padding: 45px 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .gateway-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .gateway-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        /* Interactive Input Wrappers */
+        .input-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .control-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: #F8FAFC;
+            transition: all 0.2s ease;
+        }
+
+        .control-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.05);
+        }
+
+        .btn-action-hub {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action-hub:hover {
+            background-color: var(--dark);
+        }
+
+        /* Error Flags */
+        .alert-flag {
+            color: #CE1126;
+            text-align: center;
+            display: none;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .tracker-alert {
+            color: #CE1126;
+            text-align: center;
+            display: none;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Progress System Timeline Architecture */
+        .flow-timeline {
+            display: none;
+            margin-top: 25px;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .flow-timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            bottom: 6px;
+            width: 3px;
+            background: #E2E8F0;
+        }
+
+        .flow-node {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .flow-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .node-indicator {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 2px #CBD5E1;
+            transition: all 0.3s ease;
+        }
+
+        .flow-node.passed .node-indicator {
+            background: #006B3F; /* Sovereign Green */
+            box-shadow: 0 0 0 2px #006B3F;
+        }
+
+        .flow-node.processing .node-indicator {
+            background: var(--secondary);
+            box-shadow: 0 0 0 2px var(--secondary);
+            animation: pulse-node 1.8s infinite ease-in-out;
+        }
+
+        .node-heading {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+
+        .node-details {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+        
+        @keyframes pulse-node {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.25); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Layout Responsive Rules */
+        @media (max-width: 480px) {
+            .search-row { flex-direction: column; gap: 10px; }
+            body.gateway-body { padding: 20px 15px; }
+            .tracker-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body class="gateway-body">
+
+    <!-- LAYER 1: PRIVATE GATEKEEPER COMPONENT -->
+    <div id="gatekeeperModule" class="gatekeeper-screen">
+        <div class="badge-state" style="margin-bottom: 15px;">Restricted Console</div>
+        <h2 class="gateway-title">Portal Access</h2>
+        <p class="gateway-subtitle">This digital workspace prototype is restricted to verified stakeholders and institutional partners of Ghana Entry Hub.</p>
+        
+        <div class="input-stack">
+            <input type="password" id="accessKeyField" class="control-input" placeholder="Enter Security Access Key">
+            <button onclick="verifyAccessKey()" class="btn-action-hub" style="text-transform: uppercase; letter-spacing: 0.5px;">Verify Credential</button>
+        </div>
+        <div id="gatekeeperError" class="alert-flag">Unrecognized Access Key. Access Denied.</div>
+    </div>
+
+    <!-- LAYER 2: INTERACTIVE IMMIGRATION OVERVIEW PANEL (LOCKED AS DEFAULT) -->
+    <div id="trackerModule" class="tracker-container">
+        <div class="badge-state" style="margin-bottom: 15px;">Real-Time GovTech Sync</div>
+        <h2 class="gateway-title" style="text-align: left;">Sankofa Passport Hub</h2>
+        <p class="gateway-subtitle" style="text-align: left; margin-bottom: 25px;">Live integration visualization tracking expatriate visa pipelines and regulatory data points.</p>
+        
+        <div class="search-row">
+            <input type="text" id="passportSearchField" class="control-input" placeholder="Enter Demo Passport Number (e.g., GH786)">
+            <button onclick="executeDatabaseQuery()" class="btn-action-hub">Query Status</button>
+        </div>
+
+        <div id="trackerError" class="tracker-alert">No records found for that file identifier. Use code 'GH786' for demonstration purposes.</div>
+
+        <!-- Simulated Database Feed Matrix -->
+        <div id="statusTimeline" class="flow-timeline">
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">Application Logged & Validated</div>
+                <div class="node-details">Corporate dossier processed through the Ghana Entry Hub secure management dashboard.</div>
+            </div>
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">Sovereign Compliance Background Evaluation</div>
+                <div class="node-details">Security validation cross-checked in accordance with corporate asset protection mandates.</div>
+            </div>
+            <div class="flow-node processing">
+                <div class="node-indicator"></div>
+                <div class="node-heading">Ghana Immigration Service (GIS) Processing</div>
+                <div class="node-details">Biometric verification files active at Immigration Headquarters, Danquah Circle, Accra.</div>
+            </div>
+            <div class="flow-node">
+                <div class="node-indicator"></div>
+                <div class="node-heading">E-Visa / Permit Token Generation</div>
+                <div class="node-details">Border ledger update automated to reflect clearance at Kotoka International Airport (KIA).</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Unlocks workspace console using scrambled credential comparisons
+    function verifyAccessKey() {
+        const inputPhrase = document.getElementById('accessKeyField').value.trim();
+        const gatekeeperBlock = document.getElementById('gatekeeperModule');
+        const trackerBlock = document.getElementById('trackerModule');
+        const gatekeeperError = document.getElementById('gatekeeperError');
+
+        // Your passwords are encrypted as scrambled strings here
+        // QUNDUkEyMDI2 = ACCRA2026
+        // SU5WRVN0 = INVEST
+        const secureKey1 = "QUNDUkEyMDI2";
+        const secureKey2 = "SU5WRVN0";
+
+        // btoa() instantly scrambles the user's input to check it against the vault
+        if (btoa(inputPhrase) === secureKey1 || btoa(inputPhrase) === secureKey2) {
+            gatekeeperBlock.style.display = 'none';
+            trackerBlock.style.display = 'block';
+        } else {
+            gatekeeperError.style.display = 'block';
+        }
+    }
+
+    // Controls the inner animation flow during user testing
+    function executeDatabaseQuery() {
+        const queryTerm = document.getElementById('passportSearchField').value.trim().toUpperCase();
+        const timelineBlock = document.getElementById('statusTimeline');
+        const trackerErrorField = document.getElementById('trackerError');
+
+        if (queryTerm === 'GH786' || queryTerm === 'DIASPORA') {
+            trackerErrorField.style.display = 'none';
+            timelineBlock.style.display = 'block';
+        } else {
+            timelineBlock.style.display = 'none';
+            trackerErrorField.style.display = 'block';
+        }
+    }
+</script>
