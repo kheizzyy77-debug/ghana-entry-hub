@@ -1,224 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Move Management & Global Mobility | Ghana Entry Hub</title>
-    <meta name="description" content="Streamlined workforce relocation, corporate tax compliance, and end-to-end global mobility management for multinational companies and organizations in Ghana.">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Move Management & Global Mobility | Ghana Entry Hub</title>
+  <meta name="description" content="Streamlined workforce relocation, corporate tax compliance, and end-to-end global mobility management for multinational companies and organizations in Ghana.">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ONLY extra styles needed for this page (does not affect other pages) -->
+  <style>
+    /* Metrics row */
+    .metrics-theme .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 90%;
+    }
+    .metric-node {
+      min-width: 140px;
+    }
+    .metric-node h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .metric-node span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    /* Airport image fix – keeps the head visible */
+    .split-image img {
+      object-position: top center;
+    }
+
+    /* Form layout for this page only */
+    .procurement-panel {
+      background: var(--white);
+      padding: 80px 0;
+    }
+    .form-card-anchor {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--light);
+      padding: 40px 45px;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 8px 30px rgba(11, 37, 69, 0.04);
+    }
+    .corporate-intake-form .form-row-node {
+      margin-bottom: 22px;
+    }
+    .corporate-intake-form label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .corporate-intake-form input,
+    .corporate-intake-form select,
+    .corporate-intake-form textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--text-dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .corporate-intake-form input:focus,
+    .corporate-intake-form select:focus,
+    .corporate-intake-form textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+    }
+    .corporate-intake-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* Generate SLA button */
+    .btn-form-submit {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      padding: 16px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .btn-form-submit:hover:not(:disabled) {
+      background-color: var(--dark);
+    }
+    .btn-form-submit:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+    .btn-form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* Success / error feedback */
+    .form-feedback {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .form-feedback.success {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      color: #065F46;
+    }
+    .form-feedback.error {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #991B1B;
+    }
+    .form-feedback code {
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .form-card-anchor {
+        padding: 30px 22px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Institutional Header Navigation Bar -->
-    <nav class="site-navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo-link">
-                <img src="assets/Ghanaentryhub-logo.jpg.jpg" alt="Ghana Entry Hub Emblem" class="site-logo">
-            </a>
-            <div class="nav-links-right">
-                <a href="index.html" class="nav-item">Home</a>
-                
-                <!-- Global Mobility Services Dropdown Node -->
-<div class="nav-dropdown">
-    <a href="#" class="nav-item dropbtn">Our Services ▾</a>
-    <div class="dropdown-content">
-        <!-- Technical & B2B Compliance Paths -->
-        <a href="immigration.html">Immigration & Visa Policy</a>
-        <a href="corporate-mobility.html">Corporate Relocation & VIP Support</a>
-        <a href="move-logistics.html">Move Logistics & Port Clearance</a>
-        
-        <!-- Lifestyle & Relocation Paths -->
-        <a href="real-estate.html">Safe Property & Land Buying</a>
-        <a href="neighborhoods.html">City & Neighborhood Guides</a>
-        <a href="education.html">Language & School Enrollment</a>
-        <a href="family-integration.html">Family & Spousal Support</a>
+<!-- Institutional Header Navigation Bar -->
+<nav class="site-navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo-link">
+      <img src="assets/Ghanaentryhub-logo.jpg.jpg" alt="Ghana Entry Hub Emblem" class="site-logo">
+    </a>
+    <div class="nav-links-right">
+      <a href="index.html" class="nav-item">Home</a>
+
+      <div class="nav-dropdown">
+        <a href="#" class="nav-item dropbtn">Our Services ▾</a>
+        <div class="dropdown-content">
+          <a href="immigration.html">Immigration & Visa Policy</a>
+          <a href="corporate-mobility.html">Corporate Relocation & VIP Support</a>
+          <a href="move-logistics.html">Move Logistics & Port Clearance</a>
+          <a href="real-estate.html">Safe Property & Land Buying</a>
+          <a href="neighborhoods.html">City & Neighborhood Guides</a>
+          <a href="education.html">Language & School Enrollment</a>
+          <a href="family-integration.html">Family & Spousal Support</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <a href="#" class="nav-item dropbtn">About the Hub ▾</a>
+        <div class="dropdown-content">
+          <a href="index.html#nkrumah-doctrine">The Nkrumah Doctrine & Mission</a>
+          <a href="partnership-mandate.html">Public-Private Partnership Mandate</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <a href="#" class="nav-item dropbtn">Guides & Updates ▾</a>
+        <div class="dropdown-content">
+          <a href="resources.html">National Economic Repository (Blueprints)</a>
+          <a href="immigration.html#act-843">Act 843 Regulatory Compliance Bulletins</a>
+        </div>
+      </div>
+
+      <a href="resources.html" class="nav-item">Resources</a>
+      <a href="#proposals" class="btn-nav-cta">Enterprise Portal Access</a>
     </div>
+  </div>
+</nav>
+
+<!-- Corporate Mobility Hero Module -->
+<header class="hero-gateway" style="background: linear-gradient(rgba(11, 37, 69, 0.88), rgba(10, 25, 47, 0.93)), url('assets/corporate-hero.jpg.jpg') no-repeat center center/cover;">
+  <div class="container">
+    <span class="badge-state">Enterprise Workforce Mobility Framework</span>
+    <h1>Streamlined Talent Relocation & Global Mobility Management for Ghana</h1>
+    <p>We partner with multinational corporations, international organizations, and NGOs to manage comprehensive team deployments, immigration compliance, and institutional logistics seamlessly.</p>
+    <div class="cta-group">
+      <a href="#proposals" class="btn-primary-blueprint">Request Corporate Proposal</a>
+      <a href="#features" class="btn-secondary-blueprint">Explore Framework</a>
+    </div>
+  </div>
+</header>
+
+<!-- Numeric Trust Board -->
+<div class="alignment-console metrics-theme">
+  <div class="metrics-row">
+    <div class="metric-node">
+      <h3>99.4%</h3>
+      <span>On-Time SLA Delivery</span>
+    </div>
+    <div class="metric-node">
+      <h3>Act 843</h3>
+      <span>Data Privacy Compliant</span>
+    </div>
+    <div class="metric-node">
+      <h3>24/7</h3>
+      <span>Assignee Support</span>
+    </div>
+    <div class="metric-node">
+      <h3>100%</h3>
+      <span>GIPC Alignment</span>
+    </div>
+  </div>
 </div>
 
-
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-item dropbtn">About the Hub ▾</a>
-                    <div class="dropdown-content">
-                        <a href="index.html#nkrumah-doctrine">The Nkrumah Doctrine & Mission</a>
-                        <a href="partnership-mandate.html">Public-Private Partnership Mandate</a>
-                    </div>
-                </div>
-
-                <!-- Legislative Updates Node -->
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-item dropbtn"> Guides & Updates▾</a>
-                    <div class="dropdown-content">
-                        <a href="resources.html">National Economic Repository (Blueprints)</a>
-                        <a href="immigration.html#act-843">Act 843 Regulatory Compliance Bulletins</a>
-                    </div>
-                </div>
-                <a href="resources.html" class="nav-item">Resources</a>
-                <a href="#proposals" class="btn-nav-cta">Enterprise Portal Access</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Corporate Mobility Hero Module -->
-    <header class="hero-gateway" style="background: linear-gradient(rgba(11, 37, 69, 0.88), rgba(10, 25, 47, 0.93)), url('assets/corporate-hero.jpg.jpg') no-repeat center center/cover;">
-        <div class="container">
-            <span class="badge-state">Enterprise Workforce Mobility Framework</span>
-            <h1>Streamlined Talent Relocation & Global Mobility Management for Ghana</h1>
-            <p>We partner with multinational corporations, international organizations, and NGOs to manage comprehensive team deployments, immigration compliance, and institutional logistics seamlessly.</p>
-            <div class="cta-group">
-                <a href="#proposals" class="btn-primary-blueprint">Request Corporate Proposal</a>
-                <a href="#features" class="btn-secondary-blueprint">Explore Framework</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Numeric Trust Board -->
-    <div class="alignment-console metrics-theme">
-        <div class="metrics-row">
-            <div class="metric-node">
-                <h3>99.4%</h3>
-                <span>On-Time SLA Delivery</span>
-            </div>
-            <div class="metric-node">
-                <h3>Act 843</h3>
-                <span>Data Privacy Compliant</span>
-            </div>
-            <div class="metric-node">
-                <h3>24/7</h3>
-                <span>Assignee Support</span>
-            </div>
-            <div class="metric-node">
-                <h3>100%</h3>
-                <span>GIPC Alignment</span>
-            </div>
-        </div>
+<!-- Core Enterprise Mobility Matrix -->
+<section id="features" class="matrix-section">
+  <div class="container">
+    <h2 class="section-title">B2B Relocation & Logistics Management</h2>
+    <p class="section-subtitle">Mitigate operational risk, control deployment costs, and provide premium soft landings for global personnel.</p>
+    <div class="matrix-grid">
+      <div class="framework-card">
+        <h3>📊 Group Move Management</h3>
+        <p>Scaling organizational footprints in Accra? We sync mass arrival logistics, cross-border container tracking, and corporate lodging pipelines efficiently.</p>
+      </div>
+      <div class="framework-card">
+        <h3>⚖️ Impatriate Tax & Compliance</h3>
+        <p>Navigate complex local tax rules safely. We manage local income tax compliance, SSNIT registration structures, and local withholdings for expat talent.</p>
+      </div>
+      <div class="framework-card">
+        <h3>📋 Expense Tracking & Audits</h3>
+        <p>Keep your transition budgets fully transparent. We provide itemized corporate billings, localized benchmarking, and cost-of-living tracking metrics.</p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Core Enterprise Mobility Matrix -->
-    <section id="features" class="matrix-section">
-        <div class="container">
-            <h2 class="section-title">B2B Relocation & Logistics Management</h2>
-            <p class="section-subtitle">Mitigate operational risk, control deployment costs, and provide premium soft landings for global personnel.</p>
-            
-            <div class="matrix-grid">
-                <!-- Service Card 1 -->
-                <div class="framework-card">
-                    <h3>📊 Group Move Management</h3>
-                    <p>Scaling organizational footprints in Accra? We sync mass arrival logistics, cross-border container tracking, and corporate lodging pipelines efficiently.</p>
-                </div>
-                <!-- Service Card 2 -->
-                <div class="framework-card">
-                    <h3>⚖️ Impatriate Tax & Compliance</h3>
-                    <p>Navigate complex local tax rules safely. We manage local income tax compliance, SSNIT registration structures, and local withholdings for expat talent.</p>
-                </div>
-                <!-- Service Card 3 -->
-                <div class="framework-card">
-                    <h3>📋 Expense Tracking & Audits</h3>
-                    <p>Keep your transition budgets fully transparent. We provide itemized corporate billings, localized benchmarking, and cost-of-living tracking metrics.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Operational Split-Screen Modules -->
+<section class="split-framework-section">
+  <div class="container-split">
+    <div class="split-image">
+      <img src="assets/group-move.jpg.jpg" alt="Corporate global mobility onboarding strategies">
+    </div>
+    <div class="split-text">
+      <span class="institution-tag">Strategic Onboarding</span>
+      <h2>Coordinating Structural Deployments Smoothly</h2>
+      <p>Moving corporate executives or technical engineering teams across international borders requires rigorous timeline execution. Our system coordinates immigration timelines with physical logistics concurrently.</p>
+      <p>We work directly alongside your internal HR department to design relocation programs that adhere perfectly to your corporate policies and service level agreements (SLAs).</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Operational Split-Screen Modules -->
-    <section class="split-framework-section">
-        <div class="container-split">
-            <div class="split-image">
-                <img src="assets/group-move.jpg.jpg" alt="Corporate global mobility onboarding strategies">
-            </div>
-            <div class="split-text">
-                <span class="institution-tag">Strategic Onboarding</span>
-                <h2>Coordinating Structural Deployments Smoothly</h2>
-                <p>Moving corporate executives or technical engineering teams across international borders requires rigorous timeline execution. Our system coordinates immigration timelines with physical logistics concurrently.</p>
-                <p>We work directly alongside your internal HR department to design relocation programs that adhere perfectly to your corporate policies and service level agreements (SLAs).</p>
-            </div>
-        </div>
-    </section>
+<section class="split-framework-section alt-bg">
+  <div class="container-split" style="direction: rtl;">
+    <div class="split-image" style="direction: ltr;">
+      <!-- head is no longer cut off -->
+      <img src="assets/airport-handling.jpg.jpg" alt="VIP secure transfer protocols at the airport">
+    </div>
+    <div class="split-text" style="direction: ltr;">
+      <span class="institution-tag">Port Operations</span>
+      <h2>VIP Port Handling & Priority Logistical Clearances</h2>
+      <p>First impressions matter for your arriving workforce. Our premium port operations group handles immediate customs clearances, asset safety parameters, and professional meet-and-greets at Kotoka International Airport.</p>
+      <p>From expedited container clearances at Tema port to corporate airport arrivals, your enterprise assets are securely tracked from point of origin to destination.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="split-framework-section alt-bg">
-        <div class="container-split" style="direction: rtl;">
-            <div class="split-image" style="direction: ltr;">
-                <img src="assets/airport-handling.jpg.jpg" alt="VIP secure transfer protocols at Kotoka Airport">
-            </div>
-            <div class="split-text" style="direction: ltr;">
-                <span class="institution-tag">Port Operations</span>
-                <h2>VIP Port Handling & Priority Logistical Clearances</h2>
-                <p>First impressions matter for your arriving workforce. Our premium port operations group handles immediate customs clearances, asset safety parameters, and professional meet-and-greets at Kotoka International Airport.</p>
-                <p>From expedited container clearances at Tema port to corporate airport arrivals, your enterprise assets are securely tracked from point of origin to destination.</p>
-            </div>
-        </div>
-    </section>
+<!-- B2B Procurement Form Module -->
+<section id="proposals" class="procurement-panel">
+  <div class="container">
+    <div class="form-card-anchor">
+      <h2 class="section-title" style="font-size: 1.8rem; text-align: left;">Request an Enterprise Proposal</h2>
+      <p style="color: var(--text-muted); margin-top: 5px;">Connect with an enterprise relocation specialist to develop your institutional mobility strategy.</p>
 
-    <!-- B2B Procurement Form Module -->
-    <section id="proposals" class="procurement-panel">
-        <div class="container">
-            <div class="form-card-anchor">
-                <h2 class="section-title" style="font-size: 1.8rem; text-align: left;">Request an Enterprise Proposal</h2>
-                <p style="color: var(--text-muted); margin-top: 5px;">Connect with an enterprise relocation specialist to develop your institutional mobility strategy.</p>
-                
-                <form class="corporate-intake-form">
-                    <div class="form-row-node">
-                        <label>Company / Institution Name</label>
-                        <input type="text" placeholder="e.g., International Tech Ltd" required>
-                    </div>
-                    <div class="form-row-node">
-                        <label>Corporate Email Address</label>
-                        <input type="email" placeholder="hr@company.com" required>
-                    </div>
-                    <div class="form-row-node">
-                        <label>Estimated Annual Transitions</label>
-                        <select required>
-                            <option value="1-5">1 - 5 Employees / Year</option>
-                            <option value="6-20">6 - 20 Employees / Year</option>
-                            <option value="20+">20+ Enterprise Scale Moves</option>
-                        </select>
-                    </div>
-                    <div class="form-row-node">
-                        <label>Deployment Requirements Summary</label>
-                        <textarea rows="4" placeholder="Describe temporary housing needs, logistics scale, or compliance consultation windows..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-form-submit">Generate SLA Framework</button>
-                </form>
-            </div>
+      <form class="corporate-intake-form" id="slaForm" novalidate>
+        <div class="form-row-node">
+          <label for="companyName">Company / Institution Name</label>
+          <input type="text" id="companyName" name="companyName" placeholder="e.g., International Tech Ltd" required>
         </div>
-    </section>
-     <!-- Master Institutional Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <img src="assets/Ghanaentryhub-logo.jpg.jpg" alt="Ghana Entry Hub Emblem" style="height: 50px; width: auto; object-fit: contain;">
-                <p>The National Soft-Landing Framework for Global Mobility, Cross-Border Capital Integration, and Workforce Relocation across the Republic of Ghana.</p>
-            </div>
-            <div class="footer-links-col">
-                <h4>Corporate Solutions</h4>
-                <ul>
-                    <li><a href="immigration.html">Immigration & Visas</a></li>
-                    <li><a href="corporate-mobility.html">Workforce Move Management</a></li>
-                    <li><a href="move-logistics.html">Port Clearances & Freight</a></li>
-                </ul>
-            </div>
-            <div class="footer-links-col">
-                <h4>Destination Services</h4>
-                <ul>
-                    <li><a href="real-estate.html">Safe Property & Land Buying</a></li>
-                    <li><a href="neighborhoods.html">City & Neighborhood Guides</a></li>
-                    <li><a href="education.html">Language & Schooling</a></li>
-                    <li><a href="family-integration.html">Family & Spousal Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-links-col">
-                <h4>Enterprise Registry</h4>
-                <ul>
-                    <li><a href="partnership-mandate.html">PPP Framework Mandate</a></li>
-                    <li><a href="resources.html">Economic Blueprints</a></li>
-                    
-                </ul>
-            </div>
+
+        <div class="form-row-node">
+          <label for="corporateEmail">Corporate Email Address</label>
+          <input type="email" id="corporateEmail" name="corporateEmail" placeholder="hr@company.com" required>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Ghana Entry Hub. All Rights Reserved. Aligned with Act 843 Data Protection Directives.</p>
-            <p>Independent Mobility Advisory Framework</p>
+
+        <div class="form-row-node">
+          <label for="annualTransitions">Estimated Annual Transitions</label>
+          <select id="annualTransitions" name="annualTransitions" required>
+            <option value="">Select volume...</option>
+            <option value="1-5">1 – 5 Employees / Year</option>
+            <option value="6-20">6 – 20 Employees / Year</option>
+            <option value="20+">20+ Enterprise Scale Moves</option>
+          </select>
         </div>
-    </footer>
+
+        <div class="form-row-node">
+          <label for="requirements">Deployment Requirements Summary</label>
+          <textarea id="requirements" name="requirements" rows="4" placeholder="Describe temporary housing needs, logistics scale, or compliance consultation windows..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-form-submit" id="generateSlaBtn">
+          Generate SLA Framework
+        </button>
+
+        <div id="formFeedback" class="form-feedback" hidden></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Master Institutional Footer -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="assets/Ghanaentryhub-logo.jpg.jpg" alt="Ghana Entry Hub Emblem" style="height: 50px; width: auto; object-fit: contain;">
+      <p>The National Soft-Landing Framework for Global Mobility, Cross-Border Capital Integration, and Workforce Relocation across the Republic of Ghana.</p>
+    </div>
+    <div class="footer-links-col">
+      <h4>Corporate Solutions</h4>
+      <ul>
+        <li><a href="immigration.html">Immigration & Visas</a></li>
+        <li><a href="corporate-mobility.html">Workforce Move Management</a></li>
+        <li><a href="move-logistics.html">Port Clearances & Freight</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Destination Services</h4>
+      <ul>
+        <li><a href="real-estate.html">Safe Property & Land Buying</a></li>
+        <li><a href="neighborhoods.html">City & Neighborhood Guides</a></li>
+        <li><a href="education.html">Language & Schooling</a></li>
+        <li><a href="family-integration.html">Family & Spousal Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Enterprise Registry</h4>
+      <ul>
+        <li><a href="partnership-mandate.html">PPP Framework Mandate</a></li>
+        <li><a href="resources.html">Economic Blueprints</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Ghana Entry Hub. All Rights Reserved. Aligned with Act 843 Data Protection Directives.</p>
+    <p>Independent Mobility Advisory Framework</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('slaForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const company  = document.getElementById('companyName').value.trim();
+    const email    = document.getElementById('corporateEmail').value.trim();
+    const volume   = document.getElementById('annualTransitions').value;
+    const feedback = document.getElementById('formFeedback');
+    const btn      = document.getElementById('generateSlaBtn');
+
+    if (!company || !email || !volume) {
+      feedback.hidden = false;
+      feedback.className = 'form-feedback error';
+      feedback.innerHTML = 'Please complete all required fields before generating the SLA framework.';
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      feedback.hidden = false;
+      feedback.className = 'form-feedback error';
+      feedback.innerHTML = 'Please enter a valid corporate email address.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Generating Framework…';
+
+    setTimeout(() => {
+      const refId = 'GEH-SLA-' + Date.now().toString().slice(-8);
+
+      feedback.hidden = false;
+      feedback.className = 'form-feedback success';
+      feedback.innerHTML = `
+        <strong>SLA Framework Request Received</strong><br>
+        Reference: <code>${refId}</code><br><br>
+        <strong>${company}</strong> · ${volume} transitions/year<br>
+        A mobility specialist will contact <strong>${email}</strong> within 1 business day with a tailored SLA outline and next-step checklist.
+      `;
+
+      btn.disabled = false;
+      btn.textContent = 'Generate SLA Framework';
+    }, 900);
+  });
+</script>
 
 </body>
 </html>
