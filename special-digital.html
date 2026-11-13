@@ -1,480 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ghana Entry Hub — Enterprise Mobility & Soft-Landing Middleware</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f1f5f9;
-      color: #0f172a;
-      padding: 24px 16px;
-      line-height: 1.5;
-    }
-    .geh-container {
-      max-width: 780px;
-      margin: 0 auto;
-    }
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Visa Live Tracking Dashboard | Ghana Entry Hub</title>
+    
+    <!-- Link your existing global stylesheet here -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- Customized Brand Extensions --- */
+        body.gateway-body {
+            background-color: var(--light, #F8FAFC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px);
+            padding: 40px 20px;
+        }
+        /* Access Gatekeeper Card (Preserved Exact Design) */
+        .gatekeeper-screen {
+            background: var(--white, #FFFFFF);
+            max-width: 450px;
+            width: 100%;
+            padding: 45px 35px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+            text-align: center;
+            border-top: 4px solid #CE1126; /* Sovereignty Signal Red */
+        }
+        /* Tracker Panel Console (Locked as Default) */
+        .tracker-container {
+            display: none; /* Injected lock state */
+            background: var(--white, #FFFFFF);
+            max-width: 780px;
+            width: 100%;
+            padding: 40px 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+            border-top: 4px solid var(--secondary, #006B3F);
+        }
+        .gateway-title {
+            color: var(--primary, #0B2545);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .gateway-subtitle {
+            color: var(--text-muted, #64748B);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
 
-    /* TOP ENTERPRISE B2B HEADER BAR */
-    .geh-top-bar {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
-    }
-    .geh-cohort-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      flex: 1;
-      min-width: 280px;
-    }
-    .geh-cohort-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #64748b;
-    }
-    .geh-cohort-select {
-      font-size: 13px;
-      font-weight: 600;
-      color: #0f172a;
-      background: #f8fafc;
-      border: 1px solid #94a3b8;
-      border-radius: 6px;
-      padding: 8px 12px;
-      cursor: pointer;
-      outline: none;
-      width: 100%;
-    }
-    .geh-cohort-select:focus {
-      border-color: #0d9488;
-      background: #ffffff;
-    }
-    .geh-security-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #f0fdfa;
-      border: 1px solid #99f6e4;
-      padding: 10px 14px;
-      border-radius: 8px;
-    }
-    .geh-shield-icon {
-      font-size: 18px;
-    }
-    .geh-security-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .geh-sec-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #0f766e;
-    }
-    .geh-sec-sub {
-      font-size: 11px;
-      color: #115e59;
-    }
+        /* --- Enterprise B2B Top Bar --- */
+        .geh-top-bar {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            padding: 14px 18px;
+            margin-bottom: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
+        .geh-cohort-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 260px;
+        }
+        .geh-cohort-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted, #64748B);
+        }
+        .geh-cohort-select {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--primary, #0B2545);
+            background: var(--white, #FFFFFF);
+            border: 1px solid #CBD5E1;
+            border-radius: 4px;
+            padding: 8px 10px;
+            cursor: pointer;
+            outline: none;
+            width: 100%;
+        }
+        .geh-cohort-select:focus {
+            border-color: var(--primary, #0B2545);
+        }
+        .geh-security-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #ECFDF5;
+            border: 1px solid #A7F3D0;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        .geh-security-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .geh-sec-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #006B3F;
+        }
+        .geh-sec-sub {
+            font-size: 0.7rem;
+            color: #065F46;
+        }
+        
+        /* Interactive Input Wrappers */
+        .input-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .search-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .control-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--text-dark, #0F172A);
+            background-color: #F8FAFC;
+            transition: all 0.2s ease;
+        }
+        .control-input:focus {
+            outline: none;
+            border-color: var(--primary, #0B2545);
+            background-color: var(--white, #FFFFFF);
+            box-shadow: 0 0 0 3px rgba(11, 37, 69, 0.05);
+        }
+        .btn-action-hub {
+            background-color: var(--primary, #0B2545);
+            color: var(--white, #FFFFFF);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-action-hub:hover {
+            background-color: var(--dark, #061529);
+        }
+        /* Error Flags */
+        .alert-flag {
+            color: #CE1126;
+            text-align: center;
+            display: none;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .tracker-alert {
+            color: #CE1126;
+            text-align: center;
+            display: none;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Progress System Timeline Architecture */
+        .flow-timeline {
+            display: none;
+            margin-top: 25px;
+            position: relative;
+            padding-left: 35px;
+        }
+        .flow-timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            bottom: 6px;
+            width: 3px;
+            background: #E2E8F0;
+        }
+        .flow-node {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        .flow-node:last-child {
+            margin-bottom: 0;
+        }
+        .node-indicator {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            border: 4px solid var(--white, #FFFFFF);
+            box-shadow: 0 0 0 2px #CBD5E1;
+            transition: all 0.3s ease;
+        }
+        .flow-node.passed .node-indicator {
+            background: #006B3F; /* Sovereign Green */
+            box-shadow: 0 0 0 2px #006B3F;
+        }
+        .flow-node.processing .node-indicator {
+            background: var(--secondary, #D97706);
+            box-shadow: 0 0 0 2px var(--secondary, #D97706);
+            animation: pulse-node 1.8s infinite ease-in-out;
+        }
+        .node-heading {
+            font-weight: 700;
+            font-size: 1.02rem;
+            color: var(--primary, #0B2545);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 3px;
+            background: #ECFDF5;
+            color: #006B3F;
+            border: 1px solid #A7F3D0;
+            text-transform: uppercase;
+        }
+        .status-tag.amber {
+            background: #FFFBEB;
+            color: #B45309;
+            border: 1px solid #FDE68A;
+        }
+        .node-details {
+            color: var(--text-muted, #64748B);
+            font-size: 0.88rem;
+            margin-top: 4px;
+            line-height: 1.45;
+        }
 
-    /* MAIN DASHBOARD CARD */
-    .geh-main-card {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
-    }
-    .geh-hub-header {
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
-    }
-    .geh-hub-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-    .geh-hub-subtitle {
-      font-size: 14px;
-      color: #64748b;
-    }
+        /* GTA Domestic Tourism & Anti-Digital Colonization Box */
+        .gta-dossier-box {
+            background: #F8FAFC;
+            border: 1px solid #CBD5E1;
+            border-left: 3px solid #006B3F;
+            border-radius: 4px;
+            padding: 14px 16px;
+            margin-top: 10px;
+        }
+        .gta-box-header {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary, #0B2545);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .gta-box-row {
+            font-size: 0.85rem;
+            color: var(--text-dark, #1E293B);
+            margin-bottom: 6px;
+        }
+        .gta-btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-gta-primary {
+            background: #006B3F;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-gta-secondary {
+            background: #FFFFFF;
+            color: var(--primary, #0B2545);
+            border: 1px solid #94A3B8;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    /* QUERY SEARCH BOX */
-    .geh-search-box {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-    .geh-search-input {
-      flex: 1;
-      min-width: 220px;
-      padding: 10px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #0f172a;
-      border: 1px solid #94a3b8;
-      border-radius: 6px;
-      background: #f8fafc;
-    }
-    .geh-search-btn {
-      background: #0f172a;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .geh-search-btn:hover {
-      background: #1e293b;
-    }
-
-    /* TIMELINE STEPS */
-    .geh-timeline {
-      margin-top: 10px;
-    }
-    .geh-step {
-      position: relative;
-      padding-left: 36px;
-      padding-bottom: 28px;
-      border-left: 2px solid #cbd5e1;
-      margin-left: 10px;
-    }
-    .geh-step:last-child {
-      border-left: 2px solid transparent;
-      padding-bottom: 4px;
-    }
-    .geh-dot {
-      position: absolute;
-      left: -9px;
-      top: 3px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 3px solid #cbd5e1;
-    }
-    .geh-dot.complete {
-      border-color: #0d9488;
-      background: #0d9488;
-    }
-    .geh-dot.active {
-      border-color: #0d9488;
-      background: #ffffff;
-    }
-    .geh-dot.pending {
-      border-color: #d97706;
-      background: #ffffff;
-    }
-    .geh-step-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .geh-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-    .geh-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 12px;
-      background: #f0fdfa;
-      color: #0f766e;
-      border: 1px solid #ccfbf1;
-    }
-    .geh-badge.amber {
-      background: #fffbeb;
-      color: #b45309;
-      border: 1px solid #fde68a;
-    }
-    .geh-desc {
-      font-size: 13.5px;
-      color: #475569;
-      margin-bottom: 8px;
-    }
-
-    /* GTA TOURISM & ANTI-DIGITAL COLONIZATION CARD */
-    .geh-gta-card {
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 10px;
-    }
-    .geh-gta-header {
-      font-size: 12px;
-      font-weight: 700;
-      color: #1e293b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .geh-gta-row {
-      font-size: 13px;
-      color: #334155;
-      margin-bottom: 8px;
-    }
-    .geh-btn-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-    .geh-btn-primary {
-      background: #0d9488;
-      color: #ffffff;
-      border: none;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .geh-btn-secondary {
-      background: #ffffff;
-      color: #0f172a;
-      border: 1px solid #94a3b8;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    /* SOFT-LANDING BUNDLE TRIGGER FOOTER */
-    .geh-retainer-banner {
-      margin-top: 24px;
-      padding: 16px 20px;
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .geh-retainer-text h5 {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-    .geh-retainer-text p {
-      font-size: 12px;
-      color: #cbd5e1;
-    }
-    .geh-retainer-btn {
-      background: #14b8a6;
-      color: #0f172a;
-      border: none;
-      padding: 9px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
+        /* Retainer Footer Banner */
+        .retainer-footer-bar {
+            margin-top: 30px;
+            padding: 16px 20px;
+            background: var(--primary, #0B2545);
+            color: #FFFFFF;
+            border-radius: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .retainer-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .retainer-info p {
+            font-size: 0.8rem;
+            color: #CBD5E1;
+        }
+        .btn-export-dossier {
+            background: #FCD116; /* Sovereign Gold */
+            color: #0B2545;
+            border: none;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        @keyframes pulse-node {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.25); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* Layout Responsive Rules */
+        @media (max-width: 480px) {
+            .search-row { flex-direction: column; gap: 10px; }
+            body.gateway-body { padding: 20px 15px; }
+            .tracker-container { padding: 30px 20px; }
+        }
+    </style>
 </head>
-<body>
+<body class="gateway-body">
 
-<div class="geh-container">
-
-  <!-- ENTERPRISE B2B HEADER BAR (20 PRIVATE-SECTOR, RMC, NGO & DIASPORA COHORTS) -->
-  <div class="geh-top-bar">
-    <div class="geh-cohort-group">
-      <span class="geh-cohort-label">Active Enterprise Fleet Cohort (Private Sector & NGOs)</span>
-      <select class="geh-cohort-select" onchange="alert('Switched Fleet Telemetry View: ' + this.options[this.selectedIndex].text)">
-        <!-- MINING, OIL & EXTRACTIVES -->
-        <option value="newmont">1. Newmont Mining Corp — Ahafo North Expat Fleet (12 Executives)</option>
-        <option value="goldfields">2. Gold Fields Ghana — Tarkwa Operations Transfer (18 Engineers)</option>
-        <option value="anglogold">3. AngloGold Ashanti — Obuasi Redevelopment Cohort (15 Specialists)</option>
-        <option value="tullow">4. Tullow Oil Ghana — Jubilee Field Offshore Rotation (22 Personnel)</option>
-        <option value="eni">5. Eni Ghana — OCTP Sankofa Gas Project Crew (14 Contractors)</option>
-
-        <!-- GLOBAL RELOCATION MANAGEMENT COMPANIES (RMCs - WHITE LABEL) -->
-        <option value="cartus">6. Cartus Global RMC — West Africa White-Label Pipeline (28 Personnel)</option>
-        <option value="sirva">7. Sirva BGRS — Multinational Executive Transfers (34 Assignees)</option>
-        <option value="santafe">8. Santa Fe Relocation — Accra Corporate Hub (19 Clients)</option>
-        <option value="graebel">9. Graebel Companies — Regional Headquarters Soft-Landing (11 Executives)</option>
-
-        <!-- TELECOMS, TECH & FINTECH -->
-        <option value="mtn">10. MTN Group — Regional 5G Infrastructure Transfer Cohort (9 Engineers)</option>
-        <option value="google">11. Google Africa — Accra AI Research Lab Visiting Fellows (16 Researchers)</option>
-        <option value="fintech">12. Pan-African Fintech Syndicate — Accra Engineering Summit Fleet (24 Founders)</option>
-        <option value="telecel">13. Telecel Group — Executive Leadership Integration Team (7 Directors)</option>
-
-        <!-- DIASPORA, TOURISM & PRIVATE TRADE INITIATIVES -->
-        <option value="diaspora">14. Beyond The Return — Sankofa Real Estate Investor Delegation (45 Guests)</option>
-        <option value="afrofuture">15. AfroFuture & Year of Return — VIP Cultural Trade Mission (60 Delegates)</option>
-        <option value="heritage">16. Diaspora Heritage Network — Right of Abode & Investment Cohort (32 Applicants)</option>
-        <option value="afcfta_private">17. AfCFTA Private Sector Council — Pan-African CEOs Trade Mission (38 Executives)</option>
-
-        <!-- INTERNATIONAL NGOs & DEVELOPMENT FOUNDATIONS -->
-        <option value="worldbank_ifc">18. International Finance Corporation (IFC) — Private Investment Mission (14 Advisors)</option>
-        <option value="undp">19. UNDP West Africa — Regional Sustainability Program Staff (21 Personnel)</option>
-        <option value="usaid">20. USAID / Feed the Future — Agribusiness Technical Team (10 Specialists)</option>
-      </select>
+    <!-- LAYER 1: PRIVATE GATEKEEPER COMPONENT (EXACT PASSWORD VAULT PRESERVED) -->
+    <div id="gatekeeperModule" class="gatekeeper-screen">
+        <div class="badge-state" style="margin-bottom: 15px;">Restricted Console</div>
+        <h2 class="gateway-title">Portal Access</h2>
+        <p class="gateway-subtitle">This digital workspace prototype is restricted to verified stakeholders and institutional partners of Ghana Entry Hub.</p>
+        
+        <div class="input-stack">
+            <input type="password" id="accessKeyField" class="control-input" placeholder="Enter Security Access Key">
+            <button onclick="verifyAccessKey()" class="btn-action-hub" style="text-transform: uppercase; letter-spacing: 0.5px;">Verify Credential</button>
+        </div>
+        <div id="gatekeeperError" class="alert-flag">Unrecognized Access Key. Access Denied.</div>
     </div>
 
-    <!-- ACT 843 DATA CLEANROOM COMPLIANCE BADGE -->
-    <div class="geh-security-pill">
-      <span class="geh-shield-icon">🛡️</span>
-      <div class="geh-security-text">
-        <span class="geh-sec-title">Act 843 Data Cleanroom Active</span>
-        <span class="geh-sec-sub">Zero-Knowledge Tokenization • 60s TTL Auto-Wipe</span>
-      </div>
+    <!-- LAYER 2: INTERACTIVE ENTERPRISE MOBILITY PANEL (LOCKED AS DEFAULT) -->
+    <div id="trackerModule" class="tracker-container">
+        
+        <!-- ENTERPRISE B2B COHORT SWITCHER & ACT 843 BADGE -->
+        <div class="geh-top-bar">
+            <div class="geh-cohort-group">
+                <span class="geh-cohort-label">Active Enterprise Fleet Cohort (Private Sector & NGOs)</span>
+                <select class="geh-cohort-select" onchange="alert('Switched Fleet Telemetry View: ' + this.options[this.selectedIndex].text)">
+                    <option value="newmont">1. Newmont Mining Corp — Ahafo North Expat Fleet (12 Executives)</option>
+                    <option value="goldfields">2. Gold Fields Ghana — Tarkwa Operations Transfer (18 Engineers)</option>
+                    <option value="anglogold">3. AngloGold Ashanti — Obuasi Redevelopment Cohort (15 Specialists)</option>
+                    <option value="tullow">4. Tullow Oil Ghana — Jubilee Field Offshore Rotation (22 Personnel)</option>
+                    <option value="eni">5. Eni Ghana — OCTP Sankofa Gas Project Crew (14 Contractors)</option>
+                    <option value="cartus">6. Cartus Global RMC — West Africa White-Label Pipeline (28 Personnel)</option>
+                    <option value="sirva">7. Sirva BGRS — Multinational Executive Transfers (34 Assignees)</option>
+                    <option value="santafe">8. Santa Fe Relocation — Accra Corporate Hub (19 Clients)</option>
+                    <option value="graebel">9. Graebel Companies — Regional Headquarters Soft-Landing (11 Executives)</option>
+                    <option value="mtn">10. MTN Group — Regional 5G Infrastructure Transfer Cohort (9 Engineers)</option>
+                    <option value="google">11. Google Africa — Accra AI Research Lab Visiting Fellows (16 Researchers)</option>
+                    <option value="fintech">12. Pan-African Fintech Syndicate — Accra Engineering Summit Fleet (24 Founders)</option>
+                    <option value="telecel">13. Telecel Group — Executive Leadership Integration Team (7 Directors)</option>
+                    <option value="diaspora">14. Beyond The Return — Sankofa Real Estate Investor Delegation (45 Guests)</option>
+                    <option value="afrofuture">15. AfroFuture & Year of Return — VIP Cultural Trade Mission (60 Delegates)</option>
+                    <option value="heritage">16. Diaspora Heritage Network — Right of Abode & Investment Cohort (32 Applicants)</option>
+                    <option value="afcfta_private">17. AfCFTA Private Sector Council — Pan-African CEOs Trade Mission (38 Executives)</option>
+                    <option value="worldbank_ifc">18. International Finance Corporation (IFC) — Private Investment Mission (14 Advisors)</option>
+                    <option value="undp">19. UNDP West Africa — Regional Sustainability Program Staff (21 Personnel)</option>
+                    <option value="usaid">20. USAID / Feed the Future — Agribusiness Technical Team (10 Specialists)</option>
+                </select>
+            </div>
+
+            <div class="geh-security-pill">
+                <span style="font-size: 16px;">🛡️</span>
+                <div class="geh-security-text">
+                    <span class="geh-sec-title">Act 843 Data Cleanroom Active</span>
+                    <span class="geh-sec-sub">Zero-Knowledge Tokenization • 60s TTL Auto-Wipe</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="badge-state" style="margin-bottom: 15px;">Real-Time GovTech Sync</div>
+        <h2 class="gateway-title" style="text-align: left;">Sankofa Passport Hub</h2>
+        <p class="gateway-subtitle" style="text-align: left; margin-bottom: 25px;">Live integration visualization tracking expatriate visa pipelines, sovereign registry sync, and soft-landing execution.</p>
+        
+        <div class="search-row">
+            <input type="text" id="passportSearchField" class="control-input" placeholder="Enter Demo Passport Number (e.g., GH786)">
+            <button onclick="executeDatabaseQuery()" class="btn-action-hub">Query Status</button>
+        </div>
+        <div id="trackerError" class="tracker-alert">No records found for that file identifier. Use code 'GH786' for demonstration purposes.</div>
+
+        <!-- Simulated 8-Step Database Feed Matrix -->
+        <div id="statusTimeline" class="flow-timeline">
+            
+            <!-- STEP 1 -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    1. Application Logged & Validated
+                    <span class="status-tag">Verified</span>
+                </div>
+                <div class="node-details">Corporate dossier processed and tokenized through the Ghana Entry Hub secure management dashboard.</div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    2. Sovereign Compliance Background Evaluation
+                    <span class="status-tag">Cleared</span>
+                </div>
+                <div class="node-details">Security validation cross-checked in accordance with corporate asset protection mandates.</div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    3. Ghana Immigration Service (GIS) Processing
+                    <span class="status-tag">Approved</span>
+                </div>
+                <div class="node-details">Biometric verification files cleared at Immigration Headquarters, Danquah Circle, Accra.</div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    4. E-Visa / Permit Token Generation
+                    <span class="status-tag">Token Issued</span>
+                </div>
+                <div class="node-details">Border ledger update automated to reflect clearance at Kotoka International Airport (KIA).</div>
+            </div>
+
+            <!-- STEP 5: GRA TAX SYNC -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    5. Ghana Revenue Authority (GRA) — Sovereign Tax Sync
+                    <span class="status-tag">TIN Generated</span>
+                </div>
+                <div class="node-details">Expatriate demographic payload synchronized with GRA digital portal. Corporate Taxpayer Identification Number (TIN) active prior to arrival.</div>
+            </div>
+
+            <!-- STEP 6: LANDS COMMISSION -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    6. Lands Commission — Title-Vetted Corporate Housing
+                    <span class="status-tag">Deed Verified</span>
+                </div>
+                <div class="node-details">Assigned executive residence in Cantonments / Airport Residential cleared against Lands Commission digital registry. Zero title disputes confirmed.</div>
+            </div>
+
+            <!-- STEP 7: KIA CIP LOGISTICS -->
+            <div class="flow-node processing">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    7. Kotoka International Airport (KIA) — CIP Ground Dispatch
+                    <span class="status-tag amber">Awaiting Flight Telemetry</span>
+                </div>
+                <div class="node-details">Arrival manifest linked to commercial CIP lounge handlers and vetted executive ground transport fleet at Terminal 3.</div>
+            </div>
+
+            <!-- STEP 8: GTA DOMESTIC TOURISM & ANTI-DIGITAL COLONIZATION HUB -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    8. Ghana Tourism Authority (GTA) — Domestic Tour & Sankofa Sync
+                    <span class="status-tag">100% Local Retention</span>
+                </div>
+                <div class="node-details">Direct-to-local-operator gateway eliminating foreign ad-platform leakages. All incoming corporate and diaspora itineraries are verified against licensed Ghanaian tour agencies.</div>
+
+                <div class="gta-dossier-box">
+                    <div class="gta-box-header">
+                        <span>📋 Domestic Itinerary Dossier</span>
+                        <span style="color: #006B3F;">● GTA Licensed Operator Verified</span>
+                    </div>
+                    <div class="gta-box-row">
+                        <strong>Attached Package:</strong> "Year of Return Executive Heritage & Kakum Canopy Immersion" (Booked via External Social Ad — <em>Linked to Dossier GH786</em>)
+                    </div>
+                    <div class="gta-box-row">
+                        <strong>Local Fulfillment Agency:</strong> Sunseekers Tours Ghana Ltd. (GTA Reg: #GTA-ACC-0419)
+                    </div>
+                    <div class="gta-btn-row">
+                        <button class="btn-gta-primary" onclick="alert('Opens Direct GTA-Licensed Local Tour Marketplace (Zero Foreign Ad Fees)')">
+                            + Book New Package via Ghana Entry Hub
+                        </button>
+                        <button class="btn-gta-secondary" onclick="alert('Opens Upload Modal to Attach External Facebook/Instagram Tour Receipt for GTA Verification')">
+                            📎 Attach External Agency Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RETAINER BUNDLE FOOTER BANNER -->
+            <div class="retainer-footer-bar">
+                <div class="retainer-info">
+                    <h4>Soft-Landing Management Retainer: Active ($1,800/mo Tier)</h4>
+                    <p>Full ground relocation, housing title protection, GRA tax sync, and CIP logistics enabled.</p>
+                </div>
+                <button class="btn-export-dossier" onclick="alert('Exporting White-Label PDF Dossier Summary for Corporate HR...')">
+                    Export Dossier
+                </button>
+            </div>
+
+        </div>
     </div>
-  </div>
 
-  <!-- MAIN TRACKING DASHBOARD CARD -->
-  <div class="geh-main-card">
-    <div class="geh-hub-header">
-      <h1 class="geh-hub-title">Sankofa Enterprise Mobility Hub</h1>
-      <p class="geh-hub-subtitle">Real-time corporate immigration telemetry, sovereign registry sync, and soft-landing execution.</p>
-      
-      <div class="geh-search-box">
-        <input type="text" class="geh-search-input" value="GH786" placeholder="Enter Reference Token or Cohort ID">
-        <button class="geh-search-btn" onclick="alert('Querying Act 843 Cleanroom Telemetry for Dossier GH786...')">Query Status</button>
-      </div>
-    </div>
+<script>
+    // Unlocks workspace console using scrambled credential comparisons
+    function verifyAccessKey() {
+        const inputPhrase = document.getElementById('accessKeyField').value.trim();
+        const gatekeeperBlock = document.getElementById('gatekeeperModule');
+        const trackerBlock = document.getElementById('trackerModule');
+        const gatekeeperError = document.getElementById('gatekeeperError');
 
-    <!-- 8-STEP EXECUTION TIMELINE -->
-    <div class="geh-timeline">
+        // Your passwords remain encrypted as scrambled Base64 strings
+        // QUNDUkEyMDI2 = ACCRA2026
+        // SU5WRVN0 = INVEST
+        const secureKey1 = "QUNDUkEyMDI2";
+        const secureKey2 = "SU5WRVN0";
 
-      <!-- STEP 1 -->
-      <div class="geh-step">
-        <div class="geh-dot complete"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">1. Corporate Dossier & Manifest Ingestion</span>
-          <span class="geh-badge">Verified</span>
-        </div>
-        <p class="geh-desc">Corporate sponsorship credentials and encrypted Ephemeral Transfer Token (ETT) generated for Dossier GH786.</p>
-      </div>
+        // btoa() instantly scrambles the user's input to check it against the vault
+        if (btoa(inputPhrase) === secureKey1 || btoa(inputPhrase) === secureKey2) {
+            gatekeeperBlock.style.display = 'none';
+            trackerBlock.style.display = 'block';
+        } else {
+            gatekeeperError.style.display = 'block';
+        }
+    }
 
-      <!-- STEP 2 -->
-      <div class="geh-step">
-        <div class="geh-dot complete"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">2. eVisa Portal Status Sync (Read-Only Middleware)</span>
-          <span class="geh-badge">Cleared</span>
-        </div>
-        <p class="geh-desc">Automated status log verified via official eVisa portal. Zero Requests for Information (RFI) pending.</p>
-      </div>
+    // Allows pressing "Enter" inside the password field to unlock
+    document.getElementById('accessKeyField').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            verifyAccessKey();
+        }
+    });
 
-      <!-- STEP 3 -->
-      <div class="geh-step">
-        <div class="geh-dot complete"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">3. Entry Clearance & Digital Token Generation</span>
-          <span class="geh-badge">Approved</span>
-        </div>
-        <p class="geh-desc">Official entry authorization confirmed for arrival at Kotoka International Airport (KIA).</p>
-      </div>
+    // Allows pressing "Enter" inside the search field to query
+    document.getElementById('passportSearchField').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            executeDatabaseQuery();
+        }
+    });
 
-      <!-- STEP 4 -->
-      <div class="geh-step">
-        <div class="geh-dot complete"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">4. Ghana Revenue Authority (GRA) — Sovereign Tax Sync</span>
-          <span class="geh-badge">TIN Auto-Generated</span>
-        </div>
-        <p class="geh-desc">Expatriate demographic payload synchronized with GRA digital taxpayer portal. Corporate tax compliance active prior to arrival.</p>
-      </div>
+    // Controls the inner animation flow during user testing
+    function executeDatabaseQuery() {
+        const queryTerm = document.getElementById('passportSearchField').value.trim().toUpperCase();
+        const timelineBlock = document.getElementById('statusTimeline');
+        const trackerErrorField = document.getElementById('trackerError');
 
-      <!-- STEP 5 -->
-      <div class="geh-step">
-        <div class="geh-dot complete"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">5. Lands Commission — Title-Vetted Corporate Housing</span>
-          <span class="geh-badge">Deed Verified</span>
-        </div>
-        <p class="geh-desc">Assigned executive residence in Cantonments / Airport Residential cleared against Lands Commission digital registry. Zero title disputes confirmed.</p>
-      </div>
-
-      <!-- STEP 6 -->
-      <div class="geh-step">
-        <div class="geh-dot pending"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">6. Kotoka International Airport (KIA) — CIP Ground Dispatch</span>
-          <span class="geh-badge amber">Awaiting Flight Telemetry</span>
-        </div>
-        <p class="geh-desc">Arrival manifest linked to commercial CIP lounge handlers and vetted executive ground transport fleet at Terminal 3.</p>
-      </div>
-
-      <!-- STEP 7: GTA TOURISM & ANTI-DIGITAL COLONIZATION MODULE -->
-      <div class="geh-step">
-        <div class="geh-dot active"></div>
-        <div class="geh-step-header">
-          <span class="geh-title">7. Ghana Tourism Authority (GTA) — Domestic Tour & Sankofa Sync</span>
-          <span class="geh-badge">100% Local Value Retention</span>
-        </div>
-        <p class="geh-desc">Direct-to-local-operator gateway eliminating foreign ad-platform leakages. All incoming corporate and diaspora itineraries are verified against licensed Ghanaian tour agencies.</p>
-
-        <div class="geh-gta-card">
-          <div class="geh-gta-header">
-            <span>📋 Domestic Itinerary Dossier</span>
-            <span style="color: #0d9488;">● GTA Licensed Operator Verified</span>
-          </div>
-          <div class="geh-gta-row">
-            <strong>Attached Package:</strong> "Year of Return Executive Heritage & Kakum Canopy Immersion" (Booked via External Social Ad — <em>Linked to Dossier GH786</em>)
-          </div>
-          <div class="geh-gta-row">
-            <strong>Local Fulfillment Agency:</strong> Sunseekers Tours Ghana Ltd. (GTA Reg: #GTA-ACC-0419)
-          </div>
-          <div class="geh-btn-group">
-            <button class="geh-btn-primary" onclick="alert('Opens Direct GTA-Licensed Local Tour Marketplace (Zero Foreign Ad Fees)')">
-              + Book New Package via Ghana Entry Hub
-            </button>
-            <button class="geh-btn-secondary" onclick="alert('Opens Upload Modal to Attach External Facebook/Instagram Tour Receipt for GTA Verification')">
-              📎 Attach External Agency Package
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- SOFT-LANDING RETAINER ACTIVATION BANNER -->
-    <div class="geh-retainer-banner">
-      <div class="geh-retainer-text">
-        <h5>Soft-Landing Management Retainer: Active ($1,800/mo Tier)</h5>
-        <p>Full ground relocation, housing title protection, GRA tax sync, and CIP logistics enabled for this cohort.</p>
-      </div>
-      <button class="geh-retainer-btn" onclick="alert('Downloading White-Label PDF Dossier Summary for Corporate HR...')">
-        Export Cohort Dossier
-      </button>
-    </div>
-
-  </div>
-</div>
-
+        if (queryTerm === 'GH786' || queryTerm === 'DIASPORA') {
+            trackerErrorField.style.display = 'none';
+            timelineBlock.style.display = 'block';
+        } else {
+            timelineBlock.style.display = 'none';
+            trackerErrorField.style.display = 'block';
+        }
+    }
+</script>
 </body>
 </html>
