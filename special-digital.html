@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Visa Live Tracking Dashboard | Ghana Entry Hub</title>
+    <title>E-Visa & Enterprise Mobility Dashboard | Ghana Entry Hub</title>
     
     <!-- Link your existing global stylesheet here -->
     <link rel="stylesheet" href="style.css">
@@ -199,7 +199,7 @@
         }
         .flow-node {
             position: relative;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
         }
         .flow-node:last-child {
             margin-bottom: 0;
@@ -347,7 +347,6 @@
             50% { transform: scale(1.25); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
-        /* Layout Responsive Rules */
         @media (max-width: 480px) {
             .search-row { flex-direction: column; gap: 10px; }
             body.gateway-body { padding: 20px 15px; }
@@ -412,7 +411,7 @@
 
         <div class="badge-state" style="margin-bottom: 15px;">Real-Time GovTech Sync</div>
         <h2 class="gateway-title" style="text-align: left;">Sankofa Passport Hub</h2>
-        <p class="gateway-subtitle" style="text-align: left; margin-bottom: 25px;">Live integration visualization tracking expatriate visa pipelines, sovereign registry sync, and soft-landing execution.</p>
+        <p class="gateway-subtitle" style="text-align: left; margin-bottom: 25px;">Live integration visualization tracking expatriate eVisas, GIPC work permits, electronic health clearances, and soft-landing execution.</p>
         
         <div class="search-row">
             <input type="text" id="passportSearchField" class="control-input" placeholder="Enter Demo Passport Number (e.g., GH786)">
@@ -420,84 +419,94 @@
         </div>
         <div id="trackerError" class="tracker-alert">No records found for that file identifier. Use code 'GH786' for demonstration purposes.</div>
 
-        <!-- Simulated 8-Step Database Feed Matrix -->
+        <!-- Simulated 9-Step Database Feed Matrix -->
         <div id="statusTimeline" class="flow-timeline">
             
             <!-- STEP 1 -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    1. Application Logged & Validated
+                    1. Corporate Dossier & Fleet Manifest Ingestion
                     <span class="status-tag">Verified</span>
                 </div>
-                <div class="node-details">Corporate dossier processed and tokenized through the Ghana Entry Hub secure management dashboard.</div>
+                <div class="node-details">Corporate sponsorship credentials and encrypted Ephemeral Transfer Token (ETT) generated for Dossier GH786.</div>
             </div>
 
             <!-- STEP 2 -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    2. Sovereign Compliance Background Evaluation
-                    <span class="status-tag">Cleared</span>
-                </div>
-                <div class="node-details">Security validation cross-checked in accordance with corporate asset protection mandates.</div>
-            </div>
-
-            <!-- STEP 3 -->
-            <div class="flow-node passed">
-                <div class="node-indicator"></div>
-                <div class="node-heading">
-                    3. Ghana Immigration Service (GIS) Processing
+                    2. National eVisa Portal Sync (Read-Only Middleware)
                     <span class="status-tag">Approved</span>
                 </div>
-                <div class="node-details">Biometric verification files cleared at Immigration Headquarters, Danquah Circle, Accra.</div>
+                <div class="node-details">Automated status log verified across 48-port entry ledger. Zero Requests for Information (RFI) pending.</div>
             </div>
 
-            <!-- STEP 4 -->
+            <!-- STEP 3: NEW GIPC & GIS E-WORK PERMIT SYNC -->
+            <div class="flow-node processing">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    3.  Post-Arrival Work Permit, GIPC Quota & Non-Citizen Card
+                    <span class="status-tag">Manual GIS Filing Active</span>
+                </div>
+                <div class="node-details">Executive entered via Business eVisa. Ghana Entry Hub ground team managing mandatory GIS medicals, Non-Citizen Ghana Card registration, and GIPC/GIS work & residence permit dossier.</div>
+            </div>
+
+            <!-- STEP 4: NEW ELECTRONIC HEALTH DECLARATION -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    4. E-Visa / Permit Token Generation
+                    4. Mandatory Electronic Health & Yellow Fever Pre-Check
+                    <span class="status-tag">Cleared for Boarding</span>
+                </div>
+                <div class="node-details">Pre-arrival electronic health declaration and Yellow Fever certificate validated for Kotoka International Airport (KIA) entry.</div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="flow-node passed">
+                <div class="node-indicator"></div>
+                <div class="node-heading">
+                    5. E-Visa & Entry Permit Token Generation
                     <span class="status-tag">Token Issued</span>
                 </div>
-                <div class="node-details">Border ledger update automated to reflect clearance at Kotoka International Airport (KIA).</div>
+                <div class="node-details">Border ledger update automated to reflect digital clearance at Kotoka International Airport (KIA).</div>
             </div>
 
-            <!-- STEP 5: GRA TAX SYNC -->
+            <!-- STEP 6: GRA TAX SYNC -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    5. Ghana Revenue Authority (GRA) — Sovereign Tax Sync
+                    6. Ghana Revenue Authority (GRA) — Sovereign Tax Sync
                     <span class="status-tag">TIN Generated</span>
                 </div>
                 <div class="node-details">Expatriate demographic payload synchronized with GRA digital portal. Corporate Taxpayer Identification Number (TIN) active prior to arrival.</div>
             </div>
 
-            <!-- STEP 6: LANDS COMMISSION -->
+            <!-- STEP 7: LANDS COMMISSION -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    6. Lands Commission — Title-Vetted Corporate Housing
+                    7. Lands Commission — Title-Vetted Corporate Housing
                     <span class="status-tag">Deed Verified</span>
                 </div>
                 <div class="node-details">Assigned executive residence in Cantonments / Airport Residential cleared against Lands Commission digital registry. Zero title disputes confirmed.</div>
             </div>
 
-            <!-- STEP 7: KIA CIP LOGISTICS -->
+            <!-- STEP 8: KIA CIP LOGISTICS -->
             <div class="flow-node processing">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    7. Kotoka International Airport (KIA) — CIP Ground Dispatch
+                    8. Kotoka International Airport (KIA) — CIP Ground Dispatch
                     <span class="status-tag amber">Awaiting Flight Telemetry</span>
                 </div>
                 <div class="node-details">Arrival manifest linked to commercial CIP lounge handlers and vetted executive ground transport fleet at Terminal 3.</div>
             </div>
 
-            <!-- STEP 8: GTA DOMESTIC TOURISM & ANTI-DIGITAL COLONIZATION HUB -->
+            <!-- STEP 9: GTA DOMESTIC TOURISM & ANTI-DIGITAL COLONIZATION HUB -->
             <div class="flow-node passed">
                 <div class="node-indicator"></div>
                 <div class="node-heading">
-                    8. Ghana Tourism Authority (GTA) — Domestic Tour & Sankofa Sync
+                    9. Ghana Tourism Authority (GTA) — Domestic Tour & Sankofa Sync
                     <span class="status-tag">100% Local Retention</span>
                 </div>
                 <div class="node-details">Direct-to-local-operator gateway eliminating foreign ad-platform leakages. All incoming corporate and diaspora itineraries are verified against licensed Ghanaian tour agencies.</div>
@@ -539,20 +548,16 @@
     </div>
 
 <script>
-    // Unlocks workspace console using scrambled credential comparisons
     function verifyAccessKey() {
         const inputPhrase = document.getElementById('accessKeyField').value.trim();
         const gatekeeperBlock = document.getElementById('gatekeeperModule');
         const trackerBlock = document.getElementById('trackerModule');
         const gatekeeperError = document.getElementById('gatekeeperError');
 
-        // Your passwords remain encrypted as scrambled Base64 strings
-        // QUNDUkEyMDI2 = ACCRA2026
-        // SU5WRVN0 = INVEST
+        
         const secureKey1 = "QUNDUkEyMDI2";
         const secureKey2 = "SU5WRVN0";
 
-        // btoa() instantly scrambles the user's input to check it against the vault
         if (btoa(inputPhrase) === secureKey1 || btoa(inputPhrase) === secureKey2) {
             gatekeeperBlock.style.display = 'none';
             trackerBlock.style.display = 'block';
@@ -561,21 +566,18 @@
         }
     }
 
-    // Allows pressing "Enter" inside the password field to unlock
     document.getElementById('accessKeyField').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             verifyAccessKey();
         }
     });
 
-    // Allows pressing "Enter" inside the search field to query
     document.getElementById('passportSearchField').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             executeDatabaseQuery();
         }
     });
 
-    // Controls the inner animation flow during user testing
     function executeDatabaseQuery() {
         const queryTerm = document.getElementById('passportSearchField').value.trim().toUpperCase();
         const timelineBlock = document.getElementById('statusTimeline');
